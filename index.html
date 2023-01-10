@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link href="StyleSheet.css" rel="StyleSheet">
-    <script defer src = "app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Email Spam List</title>
+    <script defer src="app.js"></script>
 </head>
 <body>
-  <main>
-    <form action="" id="emailForm">
-      <input type="email" placeholder="Email" name="Email" required>
-      <button>Add Email</button>
+  <div class="container">
+    <form id="emailForm">
+      <input type="email" placeholder="Email" name="Email" id="email" class="btn" required>
+      <input type="submit" value="Submit" id="submit" class="btn">
     </form>
-    <div class="emails">Emails Harvested</div>
-  </main>
+    <button id="clear" class="btn">Table Wipe</button>
+    <table id="myTable">
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+      </tr>
+    </table>
+    
+  </div class="container">
 </body>
 </html>

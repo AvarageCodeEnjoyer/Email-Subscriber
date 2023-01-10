@@ -1,0 +1,41 @@
+body{
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+.container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(75, 110, 110);
+  height: 100vh;
+  overflow: hidden;
+}
+
+#emailForm{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#email{
+  width: 200px;
+  background-color: rgb(163, 170, 170);
+  border: 5px solid rgb(97, 121, 121);
+}
+
+.btn{
+  width: 100px;
+  height: 35px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  outline: none;
+  background-color: rgb(189, 205, 220);
+  border: 2px solid rgb(76, 103, 103);
+}

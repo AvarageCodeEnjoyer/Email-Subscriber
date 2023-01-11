@@ -3,8 +3,15 @@ const button = document.getElementById("btn")
 const submit = document.getElementById("submit")
 const clear = document.getElementById("clear")
 const inputText = document.getElementById("email")
-var emails = []
-var emailInput
+const emailMembers = JSON.parse(localStorage.getItem("emailMember")) || [];
+let emailInput = emailForm["email"]
+// let emailInput = emailInput.value;
+const addEmail = (emailInput) => {
+  emailMembers.push(emailInput)
+  localStorage.setItem("emailMembers", JSON.stringify(emailMembers));
+  return {emailInput}
+}
+console.log(emailInput);
 var i = 0
 
 /* function saveData() {
@@ -20,46 +27,47 @@ var i = 0
 /*                 main function to add items to local storage                */
 /* -------------------------------------------------------------------------- */
 
-submit.addEventListener('click', function(event){
+emailForm.onsubmit = e => {
   //* Prevent submit from reloading the page and resetting 'i'
-  event.preventDefault();
+  e.preventDefault();
 
-  //* Makes "emailValue" mean the value of the email input
-  let emailInput = emailForm["Email"]
-  let emailValue = emailInput.value;
+  // const addEmail = addEmail(emailInput.value)
+  
+  //* Makes "emailInput" mean the value of the email input
+  
+  const newEmail = addEmail(emailInput.value);
 
   //* Checks if email input is empty
-  if(emailValue === ""){
-    console.log("failed")
-    return
+  if(newEmail === " "){
+    alert("Input box empty")
+    return 
+  
   }
 
-  //* Checks if an email is valid
-  if(emailVerification(emailValue) === false){
+  // emailInput.value = ""
+
+/*   //* Checks if an email is valid
+  if(emailVerification(emailInput) === false){
+    alert("FOLLOW REGEX \n /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-] \n {0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/")
     return
   }
 
   //* Check if the value is already stored
-  if(localStorageCheck(emailValue) === true){
+  if(localStorageCheck(emailInput) === true){
+    alert("Email already in list")
     return
-  }
-  
-  //* Add emailValue to the emails array  
-  emails.push(emailValue);
+  } */
 
-  //* If it passes localStorageCheck then add value to local storage 
-  localStorage.setItem("email " + i, emailValue);
-
-  //* Console log the number in local storage and increment
+  //* Console log the number in local storage and increment 'i'
   console.log(i)
   i++
 
   //* Erase text in input box now that it doesn't reload the page
   inputText.value = ""
-});
+}
 
 //* Makes "Table Wipe" button clear local storage
-clear.addEventListener('click', () =>{
+  clear.addEventListener('click', () =>{
   localStorage.clear()
 })
 

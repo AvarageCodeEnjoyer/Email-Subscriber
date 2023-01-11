@@ -3,24 +3,14 @@ const button = document.getElementById("btn")
 const submit = document.getElementById("submit")
 const clear = document.getElementById("clear")
 const inputText = document.getElementById("email")
-const emailMembers = JSON.parse(localStorage.getItem("emailMember")) || [];
+var emailMembers = JSON.parse(localStorage.getItem("emailMembers")) || [];
 let emailInput = emailForm["email"]
-// let emailInput = emailInput.value;
+var i = 0
 const addEmail = (emailInput) => {
   emailMembers.push(emailInput)
   localStorage.setItem("emailMembers", JSON.stringify(emailMembers));
   return {emailInput}
 }
-console.log(emailInput);
-var i = 0
-
-/* function saveData() {
-  //* Get the data from the table
-  var tableData = document.getElementById("myTable").innerHTML;
-
-  //* Save the data to local storage
-  localStorage.setItem("tableData", tableData);
-} */
 
 
 /* -------------------------------------------------------------------------- */
@@ -44,19 +34,17 @@ emailForm.onsubmit = e => {
   
   }
 
-  // emailInput.value = ""
-
-/*   //* Checks if an email is valid
-  if(emailVerification(emailInput) === false){
+  //* Checks if an email is valid
+  if(emailVerification(newEmail) === false){
     alert("FOLLOW REGEX \n /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-] \n {0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/")
     return
   }
 
   //* Check if the value is already stored
-  if(localStorageCheck(emailInput) === true){
+  if(localStorageCheck(newEmail) === true){
     alert("Email already in list")
     return
-  } */
+  }
 
   //* Console log the number in local storage and increment 'i'
   console.log(i)
@@ -69,6 +57,7 @@ emailForm.onsubmit = e => {
 //* Makes "Table Wipe" button clear local storage
   clear.addEventListener('click', () =>{
   localStorage.clear()
+  emailMembers = []
 })
 
 /* -------------------------------------------------------------------------- */
